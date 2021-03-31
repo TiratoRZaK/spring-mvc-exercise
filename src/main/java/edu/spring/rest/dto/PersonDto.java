@@ -7,8 +7,9 @@
  * Otherwise this violation would be treated by law and would be subject to legal prosecution.
  * Legal use of the software provides receipt of a license from the right name only.
  */
-package edu.spring.rest;
+package edu.spring.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.spring.domain.Person;
 
 /**
@@ -17,7 +18,9 @@ import edu.spring.domain.Person;
 @SuppressWarnings("all")
 public class PersonDto {
 
-    private int id = -1;
+    private int id = 1;
+
+    @JsonProperty("personName")
     private String name;
 
     public PersonDto() {
@@ -48,7 +51,7 @@ public class PersonDto {
         return new Person(dto.getId(), dto.getName());
     }
 
-    public static PersonDto toDto(Person account) {
-        return new PersonDto(account.getId(), account.getName());
+    public static PersonDto toDto(Person person) {
+        return new PersonDto(person.getId(), person.getName());
     }
 }
